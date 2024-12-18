@@ -14,11 +14,32 @@ SHEET = GSPREAD_CLIENT.open('students_grades')
 
 
 def get_grades(sheet):
+    """
+    Get grades from user
+    """
     print("Please enter the Grades for students")
     print("Enter 5 grades separated by commma(,)")
     print("Example: 60,76,48,90,54\n")
-    grade = input("Enter the here: ")
-    print(f'the Grades provided is {grade}')
+    grade_str = input("Enter the here:\n")
+
+    grades = grade_str.split(',')
+    validate_grades(grades)
+
+
+def validate_grades(grades):
+    """
+    convert string values to integers(within try).
+    raise ValueError if can not convert the string to integer,
+    or the grades not exactly 5.
+    """
+    try:
+        if len(grades) != 5:
+            raise ValueError(
+                f"Expected 5 values. you provided ({len(grades)})")
+    except ValueError as error:
+        print(f"Invalid data!: {error}, please try again.")
+
+    print(grades)
 
 
 get_grades('math')
