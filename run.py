@@ -12,6 +12,18 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('students_grades')
 
-student = SHEET.worksheet('math')
-data = student.get_all_values()
-print(data)
+
+def get_grades(sheet):
+    print("Please enter the Grades for students")
+    print("Enter 5 grades separated by commma(,)")
+    print("Example: 60,76,48,90,54\n")
+    grade = input("Enter the here: ")
+    print(f'the Grades provided is {grade}')
+
+
+get_grades('math')
+
+
+# student = SHEET.worksheet('math')
+# data = student.get_all_values()
+# print(data)
