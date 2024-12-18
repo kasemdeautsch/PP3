@@ -59,10 +59,11 @@ def update_math_worksheet(grades):
     print("Math worksheet updated successfully.\n")
 
 
-values = get_grades('math')
-grades = [int(value) for value in values]
-update_math_worksheet(grades)
-print(grades)
+if __name__ == "__main__":
+    values = get_grades('math')
+    grades = [int(value) for value in values]
+    update_math_worksheet(grades)
+    print(grades)
 
 # student = SHEET.worksheet('math')
 # data = student.get_all_values()
