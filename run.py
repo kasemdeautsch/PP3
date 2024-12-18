@@ -16,6 +16,8 @@ SHEET = GSPREAD_CLIENT.open('students_grades')
 def get_grades(sheet):
     """
     Get grades from user
+    Use a while loop that ends only when grades are 5 long 
+    and all the grades numbers rather than something else.
     """
     while True:
         print("Please enter the Grades for students")
@@ -47,8 +49,20 @@ def validate_grades(grades):
     return True
 
 
-grade = get_grades('math')
-print(grade)
+def update_math_worksheet(grades):
+    """
+    update math worksheet add new row with the list data provided.
+    """
+    print("Updating grades in math sheet...\n")
+    math_sheet = SHEET.worksheet('math')
+    math_sheet.append_row(grades)
+    print("Math worksheet updated successfully.\n")
+
+
+values = get_grades('math')
+grades = [int(value) for value in values]
+update_math_worksheet(grades)
+print(grades)
 
 # student = SHEET.worksheet('math')
 # data = student.get_all_values()
