@@ -17,13 +17,17 @@ def get_grades(sheet):
     """
     Get grades from user
     """
-    print("Please enter the Grades for students")
-    print("Enter 5 grades separated by commma(,)")
-    print("Example: 60,76,48,90,54\n")
-    grade_str = input("Enter the here:\n")
+    while True:
+        print("Please enter the Grades for students")
+        print("Enter 5 grades separated by commma(,)")
+        print("Example: 60,76,48,90,54\n")
+        grade_str = input("Enter the here:\n")
 
-    grades = grade_str.split(',')
-    validate_grades(grades)
+        grades = grade_str.split(',')
+        if validate_grades(grades):
+            print("Data is valid!.")
+            break
+    return grades
 
 
 def validate_grades(grades):
@@ -39,13 +43,12 @@ def validate_grades(grades):
                 f"Expected 5 values. you provided ({len(grades)})")
     except ValueError as error:
         print(f"Invalid data!: {error}, please try again.")
+        return False
+    return True
 
-    print(grades)
 
-
-get_grades('math')
-
+grade = get_grades('math')
+print(grade)
 
 # student = SHEET.worksheet('math')
 # data = student.get_all_values()
-# print(data)
