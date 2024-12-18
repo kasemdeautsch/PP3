@@ -33,6 +33,7 @@ def validate_grades(grades):
     or the grades not exactly 5.
     """
     try:
+        [int(num) for num in grades]
         if len(grades) != 5:
             raise ValueError(
                 f"Expected 5 values. you provided ({len(grades)})")
