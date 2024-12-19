@@ -13,10 +13,10 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('students_grades')
 
 
-def get_grades(sheet):
+def get_grades():
     """
     Get grades from user
-    Use a while loop that ends only when grades are 5 long 
+    Use a while loop that ends only when grades are 5 long
     and all the grades numbers rather than something else.
     """
     while True:
@@ -139,14 +139,48 @@ def print_max_result(data, worksheet):
     return result
 
 
+def read_subject_name():
+
+    while True:
+        print("Please enter which subject to update.")
+        print("you should enter only number (1/2/3).")
+        print("1.Math   2.Science   3.Biology")
+        option = input("Enter here!\n")
+        validate_number(option)
+        if validate_number(option):
+            break
+    return option
+
+
+def validate_number(number):
+    # print("xf")
+    try:
+        int(number)
+    except ValueError:
+        print("enter number please")
+        return False
+    return True
+
+
 def main():
     """
     call all program functions
     """
-    values = get_grades('math')
-    grades = [int(value) for value in values]
-    update_worksheet(grades, 'math')
 
+    values = get_grades()
+    grades = [int(value) for value in values]
+
+    subject = read_subject_name()
+    print(subject)
+    if int(subject) == 1:
+        print('math')
+        update_worksheet(grades, 'math')
+    elif int(subject) == 2:
+        update_worksheet(grades, 'science')
+    elif int(subject) == 3:
+        update_worksheet(grades, 'biology')
+
+    """
     subject_columns = get_subject_grades('math')
     pprint(subject_columns)
 
@@ -160,11 +194,18 @@ def main():
     print(max_grade_data)
     max_result = print_max_result(max_grade_data, 'math')
     print(max_result)
+    """
 
 
 print("\nStaring the program.")
 print("------------------")
 main()
+
+# subject = read_subject_name()
+# print(subject)
+# update_worksheet(grades, 'math')
+
+
 """
 subject_columns = get_subject_grades('math')
 pprint(subject_columns)
