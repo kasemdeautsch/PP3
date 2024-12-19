@@ -52,16 +52,6 @@ def validate_grades(grades):
     return True
 
 
-def update_math_worksheet(grades):
-    """
-    update math worksheet add new row with the list data provided.
-    """
-    print("Updating grades in math sheet...\n")
-    math_sheet = SHEET.worksheet('math')
-    math_sheet.append_row(grades)
-    print("Math worksheet updated successfully.\n")
-
-
 def update_worksheet(grades, worksheet):
     """
     receives the grades(listt of integers)
@@ -82,6 +72,18 @@ def calculate_average(sheet):
     # pprint(math[-1])
 
 
+def get_subject_grades(worksheet):
+    """
+    Gets the grades of particular worksheet
+    """
+    subject_worksheet = SHEET.worksheet(worksheet)
+    columns = []
+    for ind in range(1, 6):
+        column = subject_worksheet.col_values(ind)
+        columns.append(column[1:])
+    return columns
+
+
 def main():
     """
     call all program functions
@@ -95,7 +97,9 @@ def main():
 
 print("Staring the program.")
 print("------------------")
-main()
+# main()
+subject_columns = get_subject_grades('math')
+pprint(subject_columns)
 
 # student = SHEET.worksheet('math')
 # data = student.get_all_values()
