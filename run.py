@@ -63,51 +63,6 @@ def update_worksheet(grades, worksheet):
     print(f"{worksheet} worksheet updated successfully.\n")
 
 
-def calculate_average(data, worksheet):
-    """
-    calculate the average grades for all students
-    in particular subject
-    """
-    print(f"Calculating Average value of {worksheet} starting...\n")
-    new_data = []
-    for column in data:
-        int_column = [int(num) for num in column]
-        # max_grade = max(int_column)
-        average = sum(int_column)/len(int_column)
-        # print(max_grade)
-        new_data.append(round(average))
-    # print(f"Average value of {worksheet} calculated Successfully.\n")
-    # calculate_max_grade(data, worksheet)
-
-    return new_data
-    # print(f"Average as list: {new_data}")
-
-    # math = SHEET.worksheet('math').get_all_values()
-    # pprint(math[-1])
-
-
-def calculate_max_grade(data, worksheet):
-    """
-    calculate the maximum grades for all students
-    in particular subject
-    """
-    print(f"Calculating Max value of {worksheet} starting...\n")
-    new_data = []
-    for column in data:
-        int_column = [int(num) for num in column]
-        max_grade = max(int_column)
-        # average = sum(int_column)/len(int_column)
-        # print(max_grade)
-        new_data.append(max_grade)
-    # print(f"Average value of {worksheet} calculated Successfully.\n")
-    # calculate_max_grade(data, worksheet)
-    return new_data
-    # print(f"Average as list: {new_data}")
-
-    # math = SHEET.worksheet('math').get_all_values()
-    # pprint(math[-1])
-
-
 def get_subject_grades(worksheet):
     """
     Gets the grades of particular worksheet
@@ -122,9 +77,56 @@ def get_subject_grades(worksheet):
     return columns
 
 
+def calculate_average(data, worksheet):
+    """
+    calculate the average grades for all students
+    in particular subject
+    """
+    print(f"Calculating Average value of {worksheet} starting...\n")
+    new_data = []
+    for column in data:
+        int_column = [int(num) for num in column]
+        average = sum(int_column)/len(int_column)
+        new_data.append(round(average))
+    return new_data
+    # math = SHEET.worksheet('math').get_all_values()
+    # pprint(math[-1])
+
+
 def print_average_result(data, worksheet):
     """
-    Gets the grades of particular worksheet
+    prints out  the average value of particular worksheet
+    for all students
+    """
+    result = {}
+    worksheet_heading = SHEET.worksheet(worksheet).get_all_values()[0]
+    # pprint(worksheet_heading)
+    for ind in range(5):
+        result[worksheet_heading[ind]] = data[ind]
+        # pprint(columns)
+        # calculate_average(columns, worksheet)
+        # return columns
+    return result
+
+
+def calculate_max_grade(data, worksheet):
+    """
+    calculate the maximum grades for all students
+    in particular subject
+    """
+    print(f"Calculating Max value of {worksheet} starting...\n")
+    new_data = []
+    for column in data:
+        int_column = [int(num) for num in column]
+        max_grade = max(int_column)
+        new_data.append(max_grade)
+    return new_data
+
+
+def print_max_result(data, worksheet):
+    """
+     prints out  the maximum value of particular worksheet
+    for all students
     """
     result = {}
     worksheet_heading = SHEET.worksheet(worksheet).get_all_values()[0]
@@ -143,19 +145,27 @@ def main():
     """
     values = get_grades('math')
     grades = [int(value) for value in values]
-    update_worksheet(grades, 'biology')
-    # calculate_average(grades)
-    # print(grades)
+    update_worksheet(grades, 'math')
+
     subject_columns = get_subject_grades('math')
     pprint(subject_columns)
+
     average_data = calculate_average(subject_columns, 'math')
     print(average_data)
+
+    average_result = print_average_result(average_data, 'math')
+    print(average_result)
+
+    max_grade_data = calculate_max_grade(subject_columns, 'math')
+    print(max_grade_data)
+    max_result = print_max_result(max_grade_data, 'math')
+    print(max_result)
 
 
 print("\nStaring the program.")
 print("------------------")
-# main()
-
+main()
+"""
 subject_columns = get_subject_grades('math')
 pprint(subject_columns)
 
@@ -165,8 +175,11 @@ print(average_data)
 average_result = print_average_result(average_data, 'math')
 print(average_result)
 
-max_grade = calculate_max_grade(subject_columns, 'math')
-print(max_grade)
+max_grade_data = calculate_max_grade(subject_columns, 'math')
+print(max_grade_data)
+max_result = print_max_result(max_grade_data, 'math')
+print(max_result)
+"""
 # res = print_average_result(average_data, 'math')
 # student = SHEET.worksheet('math')
 # data = student.get_all_values()
