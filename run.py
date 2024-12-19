@@ -54,7 +54,7 @@ def validate_grades(grades):
 
 def update_worksheet(grades, worksheet):
     """
-    receives the grades(listt of integers)
+    receives the grades(list of integers)
     insert the grades in the relevent worksheet
     """
     print(f"Updating grades in {worksheet} worksheet...\n")
@@ -63,12 +63,21 @@ def update_worksheet(grades, worksheet):
     print(f"{worksheet} worksheet updated successfully.\n")
 
 
-def calculate_average(sheet):
+def calculate_average(data, worksheet):
     """
-    calculate the average og grades for all students
+    calculate the average grades for all students
+    in particular subject
     """
-    print("Calculating Average value starting...\n")
-    math = SHEET.worksheet('math').get_all_values()
+    print(f"Calculating Average value of {worksheet} starting...\n")
+    new_data = []
+    for column in data:
+        int_column = [int(num) for num in column]
+        average = sum(int_column)/len(int_column)
+        new_data.append(round(average))
+    print(f"Average value of {worksheet} calculated Successfully.\n")
+    return new_data
+
+    # math = SHEET.worksheet('math').get_all_values()
     # pprint(math[-1])
 
 
@@ -91,15 +100,18 @@ def main():
     values = get_grades('math')
     grades = [int(value) for value in values]
     update_worksheet(grades, 'biology')
-    calculate_average(grades)
+    # calculate_average(grades)
     # print(grades)
+    subject_columns = get_subject_grades('math')
+    pprint(subject_columns)
+    average_data = calculate_average(subject_columns, 'math')
+    print(average_data)
 
 
-print("Staring the program.")
+print("\nStaring the program.")
 print("------------------")
-# main()
-subject_columns = get_subject_grades('math')
-pprint(subject_columns)
+main()
+
 
 # student = SHEET.worksheet('math')
 # data = student.get_all_values()
