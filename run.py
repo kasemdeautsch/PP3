@@ -62,13 +62,24 @@ def update_math_worksheet(grades):
     print("Math worksheet updated successfully.\n")
 
 
+def update_worksheet(grades, worksheet):
+    """
+    receives the grades(listt of integers)
+    insert the grades in the relevent worksheet
+    """
+    print(f"Updating grades in {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(grades)
+    print(f"{worksheet} worksheet updated successfully.\n")
+
+
 def calculate_average(sheet):
     """
     calculate the average og grades for all students
     """
     print("Calculating Average value starting...\n")
     math = SHEET.worksheet('math').get_all_values()
-    pprint(math[-1])
+    # pprint(math[-1])
 
 
 def main():
@@ -77,7 +88,7 @@ def main():
     """
     values = get_grades('math')
     grades = [int(value) for value in values]
-    update_math_worksheet(grades)
+    update_worksheet(grades, 'biology')
     calculate_average(grades)
     # print(grades)
 
