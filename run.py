@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-
+from pprint import pprint
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -29,6 +29,9 @@ def get_grades(sheet):
         if validate_grades(grades):
             print("Data is valid!.")
             break
+    # print(grades)
+    # values = [int(value) for value in grades]
+    # update_math_worksheet(values)
     return grades
 
 
@@ -59,11 +62,29 @@ def update_math_worksheet(grades):
     print("Math worksheet updated successfully.\n")
 
 
-if __name__ == "__main__":
+def calculate_average(sheet):
+    """
+    calculate the average og grades for all students
+    """
+    print("Calculating Average value starting...\n")
+    math = SHEET.worksheet('math').get_all_values()
+    pprint(math[-1])
+
+
+def main():
+    """
+    call all program functions
+    """
     values = get_grades('math')
     grades = [int(value) for value in values]
     update_math_worksheet(grades)
-    print(grades)
+    calculate_average(grades)
+    # print(grades)
+
+
+print("Staring the program.")
+print("------------------")
+main()
 
 # student = SHEET.worksheet('math')
 # data = student.get_all_values()
