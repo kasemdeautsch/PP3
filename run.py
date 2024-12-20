@@ -188,7 +188,7 @@ def main():
         max_result = print_max_result(max_grade_data, 'math')
         print("Max grades results of math:")
         print("-------------------------------")
-        print(max_result, "\n")
+        print(max_result)
     elif int(subject) == 2:
         update_worksheet(grades, 'science')
         subject_columns = get_subject_grades('science')
@@ -201,7 +201,7 @@ def main():
         max_result = print_max_result(max_grade_data, 'science')
         print("Max grades results of science:")
         print("-------------------------------")
-        print(max_result, "\n")
+        print(max_result)
     elif int(subject) == 3:
         update_worksheet(grades, 'biology')
         subject_columns = get_subject_grades('biology')
@@ -214,6 +214,7 @@ def main():
         max_result = print_max_result(max_grade_data, 'biology')
         print("Max grades results of biology:")
         print("-------------------------------")
+        print(max_result)
 
 
 print("\nStaring the program.")
