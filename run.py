@@ -182,35 +182,54 @@ def update_result(grades, subject):
     print(max_result)
 
 
+def validate_continue_answer(answer):
+    if answer.lower() == "n":
+        return True
+    elif answer.lower() == "y":
+        return False
+    else:
+        print(f"Invalid input ({answer}), please enter (y/n)")
+        validate_continue_answer(answer)
+
+
 def main():
     """
     call all program functions
     """
-    print("This program accepts a list of grades for 5 students,\n"
-          "and a choosen (subject), then insert the grades in a worksheet.\n"
-          "the worksheet contains 3 subjects (Math, Science, Biology),\n"
-          "and hosted in Google Sheets.\n")
+    while True:
+        print("\nThis program accepts a list of grades for 5 students,\n"
+              "and a choosen (subject), then insert the grades in a worksheet.\n"
+              "the worksheet contains 3 subjects (Math, Science, Biology),\n"
+              "and hosted in Google Sheets.\n")
 
-    # values = get_grades()
-    # grades = [int(value) for value in values]
+        # values = get_grades()
+        # grades = [int(value) for value in values]
 
-    subject = read_subject_name()
-    values = get_grades()
+        subject = read_subject_name()
+        values = get_grades()
 
-    grades = [int(value) for value in values]
-    if int(subject) == 1:
-        update_result(grades, 'math')
-    elif int(subject) == 2:
-        update_result(grades, 'science')
-    elif int(subject) == 3:
-        update_result(grades, 'biology')
+        grades = [int(value) for value in values]
+        if int(subject) == 1:
+            update_result(grades, 'math')
+        elif int(subject) == 2:
+            update_result(grades, 'science')
+        elif int(subject) == 3:
+            update_result(grades, 'biology')
+
+        answer = input("\nDo you want to continue? (y/n): \n")
+        if validate_continue_answer(answer):
+            print("Bye!")
+            print("------------------")
+            break
 
 
-print("\nStaring the program.")
+print("\nStaring the program!")
 print("------------------")
 main()
-
-
-# res = print_average_result(average_data, 'math')
-# student = SHEET.worksheet('math')
-# data = student.get_all_values()
+"""
+while True:
+    answer = input("Do you want to continue? (y/n)")
+    if validate_continue_answer(answer):
+        print("Bye!")
+        break
+"""
