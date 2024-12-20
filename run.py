@@ -145,26 +145,25 @@ def print_max_result(data, worksheet):
 def read_subject_name():
 
     while True:
-        print("""Please enter subject number and the program will 
-calculate the average and max grade for all students in that subject.
-It will print the results in a dictionary.\n""")
+        print("Please enter subject number and the program will"
+              "calculate the average and max grade for all students in that subject."
+              "It will print the results in a dictionary.\n")
         print("you should enter only number (1 / 2 / 3).")
         print("1.Math   2.Science   3.Biology\n")
         option = input("Enter here:\n")
-        validate_number(option)
+        # validate_number(option)
         if validate_number(option):
             break
     return option
 
 
 def validate_number(number):
-    # print("xf")
     try:
         int(number)
-        # if int(number) not in [1, 2, 3]:
-        # raise ValueError("Expected integer number 1-3")
-    except ValueError:
-        print(f"Invalid data!, please try again.\n")
+        if int(number) not in [1, 2, 3]:
+            raise ValueError("Expected integer number between 1-3")
+    except ValueError as error:
+        print(f"Invalid data!: {error}, please try again.")
         return False
     return True
 
@@ -193,35 +192,13 @@ def main():
     grades = [int(value) for value in values]
 
     subject = read_subject_name()
-    # print(subject)
+
     if int(subject) == 1:
         update_result(grades, 'math')
     elif int(subject) == 2:
-        update_worksheet(grades, 'science')
-        subject_columns = get_subject_grades('science')
-        average_data = calculate_average(subject_columns, 'science')
-        average_result = print_average_result(average_data, 'science')
-        print("Average grades results of science:")
-        print("-------------------------------")
-        print(average_result, "\n")
-        max_grade_data = calculate_max_grade(subject_columns, 'science')
-        max_result = print_max_result(max_grade_data, 'science')
-        print("Max grades results of science:")
-        print("-------------------------------")
-        print(max_result)
+        update_result(grades, 'science')
     elif int(subject) == 3:
-        update_worksheet(grades, 'biology')
-        subject_columns = get_subject_grades('biology')
-        average_data = calculate_average(subject_columns, 'biology')
-        average_result = print_average_result(average_data, 'biology')
-        print("Average grades results of biology:")
-        print("-------------------------------")
-        print(average_result, "\n")
-        max_grade_data = calculate_max_grade(subject_columns, 'biology')
-        max_result = print_max_result(max_grade_data, 'biology')
-        print("Max grades results of biology:")
-        print("-------------------------------")
-        print(max_result)
+        update_result(grades, 'biology')
 
 
 print("\nStaring the program.")
