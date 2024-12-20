@@ -215,47 +215,12 @@ def main():
         print("Max grades results of biology:")
         print("-----------------------")
 
-    """
-    subject_columns = get_subject_grades('math')
-    pprint(subject_columns)
-
-    average_data = calculate_average(subject_columns, 'math')
-    print(average_data)
-
-    average_result = print_average_result(average_data, 'math')
-    print(average_result)
-
-    max_grade_data = calculate_max_grade(subject_columns, 'math')
-    print(max_grade_data)
-    max_result = print_max_result(max_grade_data, 'math')
-    print(max_result)
-    """
-
 
 print("\nStaring the program.")
 print("------------------")
 main()
 
-# subject = read_subject_name()
-# print(subject)
-# update_worksheet(grades, 'math')
 
-
-"""
-subject_columns = get_subject_grades('math')
-pprint(subject_columns)
-
-average_data = calculate_average(subject_columns, 'math')
-print(average_data)
-
-average_result = print_average_result(average_data, 'math')
-print(average_result)
-
-max_grade_data = calculate_max_grade(subject_columns, 'math')
-print(max_grade_data)
-max_result = print_max_result(max_grade_data, 'math')
-print(max_result)
-"""
 # res = print_average_result(average_data, 'math')
 # student = SHEET.worksheet('math')
 # data = student.get_all_values()
