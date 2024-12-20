@@ -43,6 +43,9 @@ def validate_grades(grades):
     """
     try:
         [int(num) for num in grades]
+        for num in grades:
+            if int(num) not in range(101):
+                raise ValueError("number must be between 0-100")
         if len(grades) != 5:
             raise ValueError(
                 f"Expected 5 values. you provided ({len(grades)})")
@@ -166,6 +169,21 @@ def validate_number(number):
     return True
 
 
+def update_result(grades, subject):
+    update_worksheet(grades, subject)
+    subject_columns = get_subject_grades(subject)
+    average_data = calculate_average(subject_columns, subject)
+    average_result = print_average_result(average_data, subject)
+    print(f"Average grades results of {subject}:")
+    print("-------------------------------")
+    print(average_result, "\n")
+    max_grade_data = calculate_max_grade(subject_columns, subject)
+    max_result = print_max_result(max_grade_data, subject)
+    print(f"Max grades results of {subject}:")
+    print("-------------------------------")
+    print(max_result)
+
+
 def main():
     """
     call all program functions
@@ -177,18 +195,7 @@ def main():
     subject = read_subject_name()
     # print(subject)
     if int(subject) == 1:
-        update_worksheet(grades, 'math')
-        subject_columns = get_subject_grades('math')
-        average_data = calculate_average(subject_columns, 'math')
-        average_result = print_average_result(average_data, 'math')
-        print("Average grades results of math:")
-        print("-------------------------------")
-        print(average_result, "\n")
-        max_grade_data = calculate_max_grade(subject_columns, 'math')
-        max_result = print_max_result(max_grade_data, 'math')
-        print("Max grades results of math:")
-        print("-------------------------------")
-        print(max_result)
+        update_result(grades, 'math')
     elif int(subject) == 2:
         update_worksheet(grades, 'science')
         subject_columns = get_subject_grades('science')
