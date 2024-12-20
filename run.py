@@ -146,8 +146,8 @@ def read_subject_name():
 calculate the average and max grade for all students in that subject.
 It will print the results in a dictionary.\n""")
         print("you should enter only number (1 / 2 / 3).")
-        print("1.Math   2.Science   3.Biology")
-        option = input("Enter here!\n")
+        print("1.Math   2.Science   3.Biology\n")
+        option = input("Enter here:\n")
         validate_number(option)
         if validate_number(option):
             break
