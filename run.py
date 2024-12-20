@@ -23,7 +23,7 @@ def get_grades():
         print("Please enter the Grades for students")
         print("Enter 5 grades separated by commma(,)")
         print("Example: 60,76,48,90,54\n")
-        grade_str = input("Enter the here:\n")
+        grade_str = input("Enter here:\n")
 
         grades = grade_str.split(',')
         if validate_grades(grades):
@@ -145,11 +145,10 @@ def print_max_result(data, worksheet):
 def read_subject_name():
 
     while True:
-        print("Please enter subject number and the program will"
-              "calculate the average and max grade for all students in that subject."
-              "It will print the results in a dictionary.\n")
-        print("you should enter only number (1 / 2 / 3).")
-        print("1.Math   2.Science   3.Biology\n")
+        print("Please enter a subject to start!")
+
+        print("you should enter only number (1 / 2 / 3).\n")
+        print("1.Math   2.Science   3.Biology")
         option = input("Enter here:\n")
         # validate_number(option)
         if validate_number(option):
@@ -187,12 +186,18 @@ def main():
     """
     call all program functions
     """
+    print("This program accepts a list of grades for 5 students,\n"
+          "and a choosen (subject), then insert the grades in a worksheet.\n"
+          "the worksheet contains 3 subjects (Math, Science, Biology),\n"
+          "and hosted in Google Sheets.\n")
 
-    values = get_grades()
-    grades = [int(value) for value in values]
+    # values = get_grades()
+    # grades = [int(value) for value in values]
 
     subject = read_subject_name()
+    values = get_grades()
 
+    grades = [int(value) for value in values]
     if int(subject) == 1:
         update_result(grades, 'math')
     elif int(subject) == 2:
