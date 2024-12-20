@@ -1,32 +1,136 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome,
+# Students Grades CMD. 
+  Wellcome to my **worksheet students project**. \
+  This is Python command line program that runs using Code Institute mock terminal on Heroku\
+  It looks like the image below:
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+  ![](/media/project-image.png)
 
-## Reminders
+## Wireframing
+**Lucid Flowcharts**
+- I designed a flowchart  using **Lucid app** to record the steps of the program \
+  to make it easy later on when writing the functions.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+  ![](/media/flowchart.png)
 
-## Creating the Heroku app
+## Features
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+**Existing Features**
 
-1. `heroku/python`
-2. `heroku/nodejs`
+- The Header
+  - The Header placed at the top of the page and shows the name of the game: Random Rock, Paper, Scissors
+    in a clear playfull font that contrasts with the background.
+  - The header tells the user clearly what game they are playing.
+![](/assets/images/readme/testing/header.png)
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+- The Game Options
+  - The game options contain a clear instructions and a choice to play Rock, Paper or Scissors  
+  - The choices section is an interactive Buttons that allow the player to click and then choose the 
+    appropriate role.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+    ![](/assets/images/readme/testing/options.png)
+- The Results
+  * When the Players click a button the relevant image is displayed in their side of the game board.
+  + when a player clicks abutton the JavaScript code automaticaly chooses a random option(image) 
+    in the computer side of the game board.
+  * according to an algorithm the computer determines who is the winner.
+  - The winner is announced to the player under the options buttons and the result score is updated for 
+    either the player or the computer.
+  + The Result and the Score is displayed clearly to the user making it easy to understand
+      who has won and the resulted **Score**.
+      ![](/assets/images/readme/testing/result.png)
+- New Feature added
+  - After 5 times of playing the final **Winner** is announced and the scores are reseted.
+  ![](/assets/images/readme/testing/final-winner.png)
+- The footer
+  - The footer located in the bottom of the page and displays the rules of the game.
+  - The footer is available to the user because it clearly shows the rules to understand
+     how the game is played.
+     ![](/assets/images/readme/testing/footer.png)
 
-Connect your GitHub repository and deploy as normal.
+**Features Left to Implement**
+- I would like to extend this game in the future to  **rock paper scissors lizard spock**.
+## Testing
+  - The game works on different web browsers like Chrome, Firefox and Edge.
+  - The results are always correct.
+  - The web site is responsive and looks good on standard screen sizes using devtools device toolbar.
+  - The header, instructions, options, results, and footer text is readable and easy to understand.
+  
+  
+  - All Images have the **alt** attribute for the purpose of impared visual users.
+  - All Buttons have the **Aria-label** attribute.
+  - I included **mete tags** with **keywords** and **description** attribute to enable more
+    SEO improvement.
+  - The fonts and colors chosen are clear and easy to understand and accessible by running it 
+     in the lighthouse in DevTools.
+  - I chosed  a color that is almost light brown for both header and footer
+     with a color that is close to it on the body also.  
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+     ![](/assets/images/readme/testing/testing.png)
+     
+     
 
----
+**Bugs**
+  - When I deployed my project to github, I noticed that the  links to (css, js) were broken, \
+    the reason was that i used the absolute file path:\
+    `<link rel="stylesheet" href="/assets/css/style.css">`
+  - To fix that I removed the / from the starting.
 
-Happy coding!
+
+**Unfixed Bugs**
+  - No unfixed bugs.
+
+  
+**Validator Testing**
+  - HTML
+    - I tested the website and no errors were returned when passing through the official W3C validator
+    ![](/assets/images/readme/testing/html-validator.png)
+    - Also 404.html page tested and no errors found.
+    ![](/assets/images/readme/testing/errorpage.png)
+    
+  - CSS 
+    <p>
+       <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+       </a>
+    </p>
+    
+    - No errors were found when passing through the official (Jigsaw) validator
+      ![](/assets/images/readme/testing/css-validator.png)
+  - Accesibility
+    - Colors and fonts are accesible and readable using lighthouse in devtools.
+      ![](/assets/images/readme/testing/testing.png)
+ - JavaScript
+   - I tested the code and found only one warning about for loop.
+    ![](/assets/images/readme/testing/Js.png)
+## Deployment
+
+  - The site was deployed to GitHub pages. The steps to deploy are as follows:
+    - In the GitHub repository, navigate to the Settings tab.
+    - Navigate to **Pages** tab in the left menue.
+    - From the source section drop-down menu choose **Deploy from branch**.
+    - Select the relevent branch (*main* in my case).
+    - Make sure the /(root) directory is selected and klick **Save**.
+    - Once the branch has been selected, the page provides the link to the deployed project.
+    - The live link can be found [here](https://github.com/kasemdeautsch/pp2).
+    - in the repository on the right menue under **Deplpyments** click on** github-pages**.
+
+## Credits
+- Content
+  - The page design and Project idea was taken from **Portfolio Project Scope** module in our course.
+  - Some functions idea ware taken from **Love Maths** project
+  - The following websites ware used for problem solving.
+    - **https://www.diffchecker.com/**.
+    - **https://stackoverflow.com/**.
+    - **https://www.w3schools.com/**.
+    - **https://www.perplexity.ai/**.
+    - **https://www.pexels.com/**.
+    - **https://tinypng.com/**.
+    -  **https://balsamiq.com/**.
+
+- Media
+  - I found the images for the (Rock Paper Scissors) in Google.
+  
