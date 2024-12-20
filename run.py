@@ -96,7 +96,7 @@ def calculate_average(data, worksheet):
     # pprint(math[-1])
 
 
-def print_average_result(data, worksheet):
+def return_average_result(data, worksheet):
     """
     prints out  the average value of particular worksheet
     for all students
@@ -126,7 +126,7 @@ def calculate_max_grade(data, worksheet):
     return new_data
 
 
-def print_max_result(data, worksheet):
+def return_max_result(data, worksheet):
     """
      prints out  the maximum value of particular worksheet
     for all students
@@ -171,12 +171,12 @@ def update_result(grades, subject):
     update_worksheet(grades, subject)
     subject_columns = get_subject_grades(subject)
     average_data = calculate_average(subject_columns, subject)
-    average_result = print_average_result(average_data, subject)
+    average_result = return_average_result(average_data, subject)
     print(f"Average grades results of {subject}:")
     print("-------------------------------")
     print(average_result, "\n")
     max_grade_data = calculate_max_grade(subject_columns, subject)
-    max_result = print_max_result(max_grade_data, subject)
+    max_result = return_max_result(max_grade_data, subject)
     print(f"Max grades results of {subject}:")
     print("-------------------------------")
     print(max_result)
@@ -189,7 +189,8 @@ def validate_continue_answer(answer):
         return False
     else:
         print(f"Invalid input ({answer}), please enter (y/n)")
-        validate_continue_answer(answer)
+        # validate_continue_answer(answer)
+        return False
 
 
 def main():
@@ -201,13 +202,8 @@ def main():
               "and a choosen (subject), then insert the grades in a worksheet.\n"
               "the worksheet contains 3 subjects (Math, Science, Biology),\n"
               "and hosted in Google Sheets.\n")
-
-        # values = get_grades()
-        # grades = [int(value) for value in values]
-
         subject = read_subject_name()
         values = get_grades()
-
         grades = [int(value) for value in values]
         if int(subject) == 1:
             update_result(grades, 'math')
@@ -215,7 +211,6 @@ def main():
             update_result(grades, 'science')
         elif int(subject) == 3:
             update_result(grades, 'biology')
-
         answer = input("\nDo you want to continue? (y/n): \n")
         if validate_continue_answer(answer):
             print("Bye!")
