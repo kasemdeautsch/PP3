@@ -45,7 +45,7 @@ def validate_grades(grades):
         [int(num) for num in grades]
         for num in grades:
             if int(num) not in range(101):
-                raise ValueError("number must be between 0-100")
+                raise ValueError("grade must be between 0-100")
         if len(grades) != 5:
             raise ValueError(
                 f"Expected 5 values. you provided ({len(grades)})")
@@ -117,7 +117,7 @@ def calculate_max_grade(data, worksheet):
     calculate the maximum grades for all students
     in particular subject
     """
-    print(f"Calculating Max value of {worksheet} starting...\n")
+    print(f"\nCalculating Max value of {worksheet} starting...\n")
     new_data = []
     for column in data:
         int_column = [int(num) for num in column]
@@ -174,12 +174,17 @@ def update_result(grades, subject):
     average_result = return_average_result(average_data, subject)
     print(f"Average grades results of {subject}:")
     print("-------------------------------")
-    print(average_result, "\n")
+    # print(average_result, "\n")
+    for key in average_result:
+        print(f"{key}: {average_result[key]}")
+    # print("")
     max_grade_data = calculate_max_grade(subject_columns, subject)
     max_result = return_max_result(max_grade_data, subject)
     print(f"Max grades results of {subject}:")
     print("-------------------------------")
-    print(max_result)
+    for key in max_result:
+        print(f"{key}: {max_result[key]}")
+    # print(max_result)
 
 
 def validate_continue_answer():
@@ -192,8 +197,6 @@ def validate_continue_answer():
             return True
         else:
             print(f"Invalid input ({answer}), please enter (y/n)")
-            # validate_continue_answer(answer)
-            # return False
 
 
 def main():
@@ -216,7 +219,7 @@ def main():
             update_result(grades, 'biology')
         # answer = input("\nDo you want to continue? (y/n): \n")
         if not validate_continue_answer():
-            print("Bye!")
+            print("I am sad to see you exit, Bye!")
             print("------------------")
             break
 
@@ -224,10 +227,3 @@ def main():
 print("\nStaring the program!")
 print("------------------")
 main()
-"""
-while True:
-    answer = input("Do you want to continue? (y/n)")
-    if validate_continue_answer(answer):
-        print("Bye!")
-        break
-"""
