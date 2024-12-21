@@ -130,6 +130,7 @@
         Heroku connect to spreadsheets.\
         more details about deploying [here](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/)
       + choose deploy.
+      + The live link can be found [here](https://studens-grades-8dd6d57a22e7.herokuapp.com/)
 ## Credits
 - Content
   - The Project idea was taken from **Love Sandiches Project**.
