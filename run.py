@@ -1,6 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -15,9 +14,10 @@ SHEET = GSPREAD_CLIENT.open('students_grades')
 
 def get_grades():
     """
-    Get grades from user
-    Use a while loop that ends only when grades are 5 long
-    and all the grades numbers rather than something else.
+    Get grades from user.
+    use a while loop that ends only when grades are 5 long,
+    and all the grades are (numbers) rather than something else.
+    accepts grades only from 0-100.
     """
     while True:
         print("Please enter the Grades for students")
@@ -39,7 +39,8 @@ def validate_grades(grades):
     """
     convert string values to integers(within try).
     raise ValueError if can not convert the string to integer,
-    or the grades not exactly 5.
+    or the grades not exactly 5 values.
+    added acondition to check if its from 0-100
     """
     try:
         [int(num) for num in grades]
@@ -68,7 +69,8 @@ def update_worksheet(grades, worksheet):
 
 def get_subject_grades(worksheet):
     """
-    Gets the grades of particular worksheet
+    Gets the grades of particular worksheet for all students
+    and return it as list of lists.
     """
     subject_worksheet = SHEET.worksheet(worksheet)
     columns = []
@@ -82,8 +84,9 @@ def get_subject_grades(worksheet):
 
 def calculate_average(data, worksheet):
     """
-    calculate the average grades for all students
-    in particular subject
+    Receives grades for all stdudens is a suubject and the woorksheet.
+    calculate the average grades for all students,
+    in particular subject and return it in a list.
     """
     print(f"Calculating Average value of {worksheet} starting...\n")
     new_data = []
@@ -98,8 +101,9 @@ def calculate_average(data, worksheet):
 
 def return_average_result(data, worksheet):
     """
-    prints out  the average value of particular worksheet
-    for all students
+    Recieves the average list for students.
+    return the average value of particular worksheet
+    for all students as dictionary.
     """
     result = {}
     worksheet_heading = SHEET.worksheet(worksheet).get_all_values()[0]
@@ -114,9 +118,11 @@ def return_average_result(data, worksheet):
 
 def calculate_max_grade(data, worksheet):
     """
-    calculate the maximum grades for all students
-    in particular subject
+    Receives grades for all stdudens is a suubject and the woorksheet.
+    calculate the max grade for all students,
+    in particular subject and return it in a list.
     """
+
     print(f"\nCalculating Max value of {worksheet} starting...\n")
     new_data = []
     for column in data:
@@ -128,8 +134,9 @@ def calculate_max_grade(data, worksheet):
 
 def return_max_result(data, worksheet):
     """
-     prints out  the maximum value of particular worksheet
-    for all students
+    Recieves the max value list for students and the worksheet.
+    return the max value of particular worksheet
+    for all students as dictionary
     """
     result = {}
     worksheet_heading = SHEET.worksheet(worksheet).get_all_values()[0]
@@ -143,7 +150,14 @@ def return_max_result(data, worksheet):
 
 
 def read_subject_name():
-
+    """
+    Use while loop to:
+    Ask user to choose the subject name by entering a number from 1-3.
+    and checks if the entry in only number(1-3).
+    return it when it meets the conditions
+    the loop here is infinite, 
+    ends only when condition True using break statement.
+    """
     while True:
         print("Please enter a subject to start!")
 
@@ -157,6 +171,12 @@ def read_subject_name():
 
 
 def validate_number(number):
+    """
+    Receives a number and  within(try):
+    converts number to integer.
+    checks if it is from 1-3.
+    raise ValueError if can not convert the string to integer, with customised message
+    """
     try:
         int(number)
         if int(number) not in [1, 2, 3]:
@@ -168,28 +188,33 @@ def validate_number(number):
 
 
 def update_result(grades, subject):
+    """
+    Receives the grades converted to numbers(as list) and the subject name
+    then cals the rest of functions, rather than calling from main
+    to save repetitive tasks.
+    """
     update_worksheet(grades, subject)
     subject_columns = get_subject_grades(subject)
     average_data = calculate_average(subject_columns, subject)
     average_result = return_average_result(average_data, subject)
     print(f"Average grades results of {subject}:")
     print("-------------------------------")
-    # print(average_result, "\n")
     for key in average_result:
         print(f"{key}: {average_result[key]}")
-    # print("")
     max_grade_data = calculate_max_grade(subject_columns, subject)
     max_result = return_max_result(max_grade_data, subject)
     print(f"Max grades results of {subject}:")
     print("-------------------------------")
     for key in max_result:
         print(f"{key}: {max_result[key]}")
-    # print(max_result)
 
 
 def validate_continue_answer():
+    """
+    Using while loop and prompts user to keep entering the answer.
+    it will not exit if user don't enter the character y or n.
+    """
     while True:
-
         answer = input("\nDo you want to continue? (y/n): \n")
         if answer.lower() == "n":
             return False
@@ -205,9 +230,9 @@ def main():
     """
     while True:
         print("\nThis program accepts a list of grades for 5 students,\n"
-              "and a choosen (subject), then insert the grades in a worksheet.\n"
+              "and a choosen(subject), then insert the grades in a worksheet.\n"
               "the worksheet contains 3 subjects (Math, Science, Biology),\n"
-              "and hosted in Google Sheets.\n")
+              "and hosted in Google Sheets the link is below.\n")
         subject = read_subject_name()
         values = get_grades()
         grades = [int(value) for value in values]
