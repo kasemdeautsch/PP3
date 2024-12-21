@@ -11,9 +11,12 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('students_grades')
 
+"""Project idea taken from Love Sandwiches Project"""
+
 
 def get_grades():
     """
+    Function idea taken from Love Sandwiches Project
     Get grades from user.
     use a while loop that ends only when grades are 5 long,
     and all the grades are (numbers) rather than something else.
@@ -37,6 +40,7 @@ def get_grades():
 
 def validate_grades(grades):
     """
+    Function idea taken from Love Sandwiches Project
     convert string values to integers(within try).
     raise ValueError if can not convert the string to integer,
     or the grades not exactly 5 values.
@@ -58,6 +62,7 @@ def validate_grades(grades):
 
 def update_worksheet(grades, worksheet):
     """
+    Function idea taken from Love Sandwiches Project
     receives the grades(list of integers)
     insert the grades in the relevent worksheet
     """
@@ -84,6 +89,7 @@ def get_subject_grades(worksheet):
 
 def calculate_average(data, worksheet):
     """
+    Function idea taken from Love Sandwiches Project
     Receives grades for all stdudens is a suubject and the woorksheet.
     calculate the average grades for all students,
     in particular subject and return it in a list.
@@ -155,7 +161,7 @@ def read_subject_name():
     Ask user to choose the subject name by entering a number from 1-3.
     and checks if the entry in only number(1-3).
     return it when it meets the conditions
-    the loop here is infinite, 
+    the loop here is infinite,
     ends only when condition True using break statement.
     """
     while True:
@@ -175,7 +181,8 @@ def validate_number(number):
     Receives a number and  within(try):
     converts number to integer.
     checks if it is from 1-3.
-    raise ValueError if can not convert the string to integer, with customised message
+    raise ValueError if can not convert the string to integer,
+    with customised message
     """
     try:
         int(number)
@@ -230,9 +237,10 @@ def main():
     """
     while True:
         print("\nThis program accepts a list of grades for 5 students,\n"
-              "and a choosen(subject), then insert the grades in a worksheet.\n"
-              "the worksheet contains 3 subjects (Math, Science, Biology),\n"
-              "and hosted in Google Sheets.\n")
+              "and a choosen(subject), then insert the grades"
+              "in a worksheet, the worksheet contains 3 subjects"
+              " (Math, Science, Biology), and hosted in Google Sheets.\n")
+
         subject = read_subject_name()
         values = get_grades()
         grades = [int(value) for value in values]

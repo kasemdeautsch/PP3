@@ -70,89 +70,70 @@
     ![](/media/outofrange.png) 
 
 **Features Left to Implement**
-- I would expand the project to accept more students and subjects.
-+ 
+- I would like to expand the project to accept more students and subjects.
++ I would like to add more functions like altering worksheets.
+
+## Data Modeling
+- I used Gspread from **Google Sheets** defining my **Scope** as **Google Drive** and **Spreadsheets**
+- I used **APIs** to connect to Google Cloud spread sheets
+- I used  creds.json file with the APIs and credentials installed.
+- The link to the sheet that this program uses is below:
+
+   [Click here to view the worksheet!](https://docs.google.com/spreadsheets/d/1X_Yz5qgYQ4rsQ_-7Uyb2vto13UbZAlNe4hHJwRMQPHY/edit?gid=178928932#gid=178928932) 
+
 ## Testing
-  - The game works on different web browsers like Chrome, Firefox and Edge.
-  - The results are always correct.
-  - The web site is responsive and looks good on standard screen sizes using devtools device toolbar.
-  - The header, instructions, options, results, and footer text is readable and easy to understand.
-  
-  
-  - All Images have the **alt** attribute for the purpose of impared visual users.
-  - All Buttons have the **Aria-label** attribute.
-  - I included **mete tags** with **keywords** and **description** attribute to enable more
-    SEO improvement.
-  - The fonts and colors chosen are clear and easy to understand and accessible by running it 
-     in the lighthouse in DevTools.
-  - I chosed  a color that is almost light brown for both header and footer
-     with a color that is close to it on the body also.  
+   I tested the program manualy by doing the following:
 
+   - I passed the code to PEP8 linter and confirmed that the code is clear and has
+      no errors.
 
-     ![](/assets/images/readme/testing/testing.png)
-     
-     
+      ![](/media/testing.png)
+
+   - Give an valid inputs (strings) where numbers are expected (out of range) inputs
+     (negative grades).
+   - Tested in workspace terminal and Heroku terminal as well.
 
 **Bugs**
-  - When I deployed my project to github, I noticed that the  links to (css, js) were broken, \
-    the reason was that i used the absolute file path:\
-    `<link rel="stylesheet" href="/assets/css/style.css">`
-  - To fix that I removed the / from the starting.
 
+  - When I deployed my project to github, I had indexing problem with lists as coloumns in worksheets
+    starting from(1), and fixed that by adding 1 where needed.
+  - The code was broken when passing huge number as agrade, i fixed that adding a feature to function 
+    to accept only range.
+  - One main bug will arrise when the sheet is not clean, so please clean the sheet before proceeding,
+    I fixed that by ensuring no letters or characters such ($,%,',...) or null values in the sheet
 
 **Unfixed Bugs**
   - No unfixed bugs.
 
   
 **Validator Testing**
-  - HTML
-    - I tested the website and no errors were returned when passing through the official W3C validator
-    ![](/assets/images/readme/testing/html-validator.png)
-    - Also 404.html page tested and no errors found.
-    ![](/assets/images/readme/testing/errorpage.png)
+
+  - PEP8
+    - No errors where returned when passing to **pep8ci.herokuapp.com**
+     ![](/assets/images/readme/testing/errorpage.png)
     
-  - CSS 
-    <p>
-       <a href="http://jigsaw.w3.org/css-validator/check/referer">
-        <img style="border:0;width:88px;height:31px"
-            src="http://jigsaw.w3.org/css-validator/images/vcss"
-            alt="Valid CSS!" />
-       </a>
-    </p>
-    
-    - No errors were found when passing through the official (Jigsaw) validator
-      ![](/assets/images/readme/testing/css-validator.png)
-  - Accesibility
-    - Colors and fonts are accesible and readable using lighthouse in devtools.
-      ![](/assets/images/readme/testing/testing.png)
- - JavaScript
-   - I tested the code and found only one warning about for loop.
-    ![](/assets/images/readme/testing/Js.png)
+
 ## Deployment
 
-  - The site was deployed to GitHub pages. The steps to deploy are as follows:
-    - In the GitHub repository, navigate to the Settings tab.
-    - Navigate to **Pages** tab in the left menue.
-    - From the source section drop-down menu choose **Deploy from branch**.
-    - Select the relevent branch (*main* in my case).
-    - Make sure the /(root) directory is selected and klick **Save**.
-    - Once the branch has been selected, the page provides the link to the deployed project.
-    - The live link can be found [here](https://github.com/kasemdeautsch/pp2).
-    - in the repository on the right menue under **Deplpyments** click on** github-pages**.
-
+  - The site was deployed on **Hroku** using Code Institute Mock Terminal for Heroku.\
+    - The steps to deploy are as follows:
+      + Clone or fork the repository.
+      + Create a Heroku App.
+      + Set buildbacks to **python** and **NodeJs** in this this order.
+      + Add new **Config Var** (The key is PORT and the value is 8000).
+      + choose deploy.
 ## Credits
 - Content
-  - The page design and Project idea was taken from **Portfolio Project Scope** module in our course.
-  - Some functions idea ware taken from **Love Maths** project
+  - The Project idea was taken from **Love Sandiches Project**.
+  - Some functions idea ware taken from the same source.
   - The following websites ware used for problem solving.
     - **https://www.diffchecker.com/**.
     - **https://stackoverflow.com/**.
     - **https://www.w3schools.com/**.
     - **https://www.perplexity.ai/**.
-    - **https://www.pexels.com/**.
-    - **https://tinypng.com/**.
-    -  **https://balsamiq.com/**.
-
+- Flowchart
+  - The flowchart made using **lucidchart**
+    - https://www.lucidchart.com
 - Media
   - I found the images for the (Rock Paper Scissors) in Google.
   
