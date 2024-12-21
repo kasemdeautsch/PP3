@@ -17,39 +17,61 @@
 
 **Existing Features**
 
-- The Header
-  - The Header placed at the top of the page and shows the name of the game: Random Rock, Paper, Scissors
-    in a clear playfull font that contrasts with the background.
-  - The header tells the user clearly what game they are playing.
-![](/assets/images/readme/testing/header.png)
+- The Starting message
+  - the program starts with a message to introduce itself and descripes what it does like it receives subject
+    name as anumber and then displays the name of subjects and waits the user to enter his choice.
 
-- The Game Options
-  - The game options contain a clear instructions and a choice to play Rock, Paper or Scissors  
-  - The choices section is an interactive Buttons that allow the player to click and then choose the 
-    appropriate role.
+![](/media/starting.png)
 
-    ![](/assets/images/readme/testing/options.png)
-- The Results
-  * When the Players click a button the relevant image is displayed in their side of the game board.
-  + when a player clicks abutton the JavaScript code automaticaly chooses a random option(image) 
-    in the computer side of the game board.
-  * according to an algorithm the computer determines who is the winner.
-  - The winner is announced to the player under the options buttons and the result score is updated for 
-    either the player or the computer.
-  + The Result and the Score is displayed clearly to the user making it easy to understand
-      who has won and the resulted **Score**.
-      ![](/assets/images/readme/testing/result.png)
-- New Feature added
-  - After 5 times of playing the final **Winner** is announced and the scores are reseted.
-  ![](/assets/images/readme/testing/final-winner.png)
-- The footer
-  - The footer located in the bottom of the page and displays the rules of the game.
-  - The footer is available to the user because it clearly shows the rules to understand
-     how the game is played.
-     ![](/assets/images/readme/testing/footer.png)
+- Enter grades
+  - It prompts user to choose a subject name and input grades and gives a sample example.
+
+    ![](/media/enter-grades.png)
+
+- Progress
+  * It shows the program progress.
+
+    ![](/media/progress.png)
+- Results
+
+  * It calculates the average and max value of the grades in a subject choosen from user
+    and print it out to the terminal
+
+    ![](/media/calculations.png)
+
++ Continue possibility
+
+  + It gives the user possibility to continue the program to update another worksheet and prints the results
+  
+      ![](/media/continue.png)
+
+- Terminate the program
+  - It terminates the program when user finished updating all subjects saying(bye!)
+
+    ![](/media/terminate.png)
+
+- Input validation and error checking
+
+  - It validates all user inputs and displayes the relevant message
+
+     ![](/media/checknumber.png)
+  + You cann't enter a string where an integer number expected
+    
+     ![](/media/validate-numbers.png)
+    
+- Grades Validation
+
+  * It does not accepts negative grades
+    
+     ![](/media/negative.png) 
+
+  + You cann't enter grades out of range (0-100)
+
+    ![](/media/outofrange.png) 
 
 **Features Left to Implement**
-- I would like to extend this game in the future to  **rock paper scissors lizard spock**.
+- I would expand the project to accept more students and subjects.
++ 
 ## Testing
   - The game works on different web browsers like Chrome, Firefox and Edge.
   - The results are always correct.

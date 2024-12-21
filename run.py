@@ -232,7 +232,7 @@ def main():
         print("\nThis program accepts a list of grades for 5 students,\n"
               "and a choosen(subject), then insert the grades in a worksheet.\n"
               "the worksheet contains 3 subjects (Math, Science, Biology),\n"
-              "and hosted in Google Sheets the link is below.\n")
+              "and hosted in Google Sheets.\n")
         subject = read_subject_name()
         values = get_grades()
         grades = [int(value) for value in values]
