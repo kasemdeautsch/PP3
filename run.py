@@ -182,15 +182,18 @@ def update_result(grades, subject):
     print(max_result)
 
 
-def validate_continue_answer(answer):
-    if answer.lower() == "n":
-        return True
-    elif answer.lower() == "y":
-        return False
-    else:
-        print(f"Invalid input ({answer}), please enter (y/n)")
-        # validate_continue_answer(answer)
-        return False
+def validate_continue_answer():
+    while True:
+
+        answer = input("\nDo you want to continue? (y/n): \n")
+        if answer.lower() == "n":
+            return False
+        elif answer.lower() == "y":
+            return True
+        else:
+            print(f"Invalid input ({answer}), please enter (y/n)")
+            # validate_continue_answer(answer)
+            # return False
 
 
 def main():
@@ -211,8 +214,8 @@ def main():
             update_result(grades, 'science')
         elif int(subject) == 3:
             update_result(grades, 'biology')
-        answer = input("\nDo you want to continue? (y/n): \n")
-        if validate_continue_answer(answer):
+        # answer = input("\nDo you want to continue? (y/n): \n")
+        if not validate_continue_answer():
             print("Bye!")
             print("------------------")
             break
