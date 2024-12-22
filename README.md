@@ -132,7 +132,8 @@
       + choose deploy.
       + The live link can be found [here](https://studens-grades-8dd6d57a22e7.herokuapp.com/)
 ## Credits
-- Content
+- Code
+  - Code Institue for the deployment terminal
   - The Project idea was taken from **Love Sandiches Project**.
   - Some functions idea ware taken from the same source.
   - The steps to create project and APIs in Google Spreadsheets\
