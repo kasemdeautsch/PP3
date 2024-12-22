@@ -11,7 +11,7 @@
 - I designed a flowchart  using **Lucid app** to record the steps of the program,\
   to make it easy later on when writing the functions.
 
-  ![](/media/flowchart.png)
+  ![](/media/flowchart2.png)
 
 ## Features
 
