@@ -48,7 +48,7 @@
       ![](/media/continue.png)
 
 - Terminate the program
-  - It terminates the program when user finished updating all subjects saying(bye!).
+  - It terminates the program when user finishes updating all subjects saying(bye!).
 
     ![](/media/terminate.png)
 
@@ -99,8 +99,8 @@
 
   - When I deployed my project to github, I had indexing problem with lists as coloumns in worksheets\
     starting from(1), and fixed that by adding 1 where needed.
-  - The code was broken when passing huge number as a grade, i fixed that by adding a feature to function\
-    to accept only a range (1-100).
+  - The code was broken when passing huge number as a grade,\
+     i fixed that by adding a feature to function to accept only a range (1-100).
   - One main bug will arrise when the sheet is not clean, so please clean the sheet before proceeding,\
     I fixed that by ensuring no letters or characters such (a, z, $, %, ' , ...).\
      or null values in the sheet.
