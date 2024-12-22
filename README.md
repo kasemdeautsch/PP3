@@ -135,6 +135,8 @@
 - Content
   - The Project idea was taken from **Love Sandiches Project**.
   - Some functions idea ware taken from the same source.
+  - The steps to create project and APIs in Google Spreadsheets\
+     followed from the same source.
   - The following websites ware used for problem solving.
     - **https://www.diffchecker.com/**.
     - **https://stackoverflow.com/**.
